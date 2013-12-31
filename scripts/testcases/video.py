@@ -23,7 +23,10 @@ class VideoTest(unittest.TestCase):
         assert d(text='Albums').wait.exists(timeout=3000), 'Gallery app can not be launched.'
         d.click('movies.png')
         d.click('play.png')
+        if d(text='Start over').wait.exists(timeout=2000):
+            d(text='Start over').click.wait()
         d.sleep(600)
+        d.expect('play.png')
         d.press('back')
         
 
